@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: aap-controller-metrics-service-monitor
+  namespace: aap
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: myaap-controller   # TODO: match controller svc labels, add monitor: metrics label to service: oc label svc
+  endpoints:
+    - port: http
+      path: /api/v2/metrics/
+      interval: 30s
+      authorization:
+        type: Bearer
+        credentials:
+          name: aap-metrics-token
+          key: token
