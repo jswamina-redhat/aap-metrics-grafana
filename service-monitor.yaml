@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: myaap-controller   # TODO: match controller svc labels, add monitor: metrics label to service: oc label svc
+      app.kubernetes.io/name: myaap-controller   # TODO: match controller svc labels
   endpoints:
     - port: http
       path: /api/v2/metrics/
